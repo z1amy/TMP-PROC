@@ -1,5 +1,5 @@
 from matrix import Matrix, SquareMatrix, SquareDiagonalMatrix, str_matrix, fill_square_matrix, \
-    fill_square_diagonal_matrix
+    fill_square_diagonal_matrix, compare
 
 
 class Node:
@@ -70,3 +70,20 @@ def write_to_file(container, out_file):
             current = current.next
             out_file.write(f'{i}: {str_matrix(current.data)}')
     out_file.write(f'Container contains {get_size(container)} elements.\n')
+
+
+def sort(container):
+    if container.head is not None:
+        node1 = container.head
+        node2 = container.head.next
+        while True:
+            while True:
+                if compare(node1.data, node2.data):
+                    node1.data, node2.data = node2.data, node1.data
+                node2 = node2.next
+                if node2 is container.head:
+                    break
+            node1 = node1.next
+            node2 = container.head
+            if node1 is container.head:
+                break

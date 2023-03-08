@@ -51,3 +51,7 @@ def str_matrix(matrix):
            f'\tSize of Matrix = {matrix.size_of_matrix}\n' \
            f'\tMatrix Data = {matrix.matrix_data}\n' \
            f'\tSum of all Elements = {sum_of_all_matrix_elements(matrix)}\n'
+
+
+def compare(matrix1, matrix2):
+    return sum_of_all_matrix_elements(matrix1) < sum_of_all_matrix_elements(matrix2)

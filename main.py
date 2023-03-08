@@ -15,6 +15,8 @@ def main():
     with open(input_file, 'r') as in_file:
         container.read_from_file(cl, in_file)
 
+    container.sort(cl)
+
     with open(output_file, 'w') as out_file:
         container.write_to_file(cl, out_file)
 
