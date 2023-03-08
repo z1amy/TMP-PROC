@@ -1,8 +1,9 @@
 class Matrix:
-    def __init__(self, size_of_matrix):
+    def __init__(self, size_of_matrix, output_type):
         self.matrix_object = None
         self.size_of_matrix = size_of_matrix
         self.matrix_data = None
+        self.output_type = output_type
 
 
 class SquareMatrix:
@@ -42,3 +43,22 @@ def str_matrix(matrix):
     return f'\tType of Matrix = {matrix.matrix_object.type_of_matrix}\n' \
            f'\tSize of Matrix = {matrix.size_of_matrix}\n' \
            f'\tMatrix Data = {matrix.matrix_data}\n'
+
+
+def get_output_type(matrix):
+    return matrix.output_type
+
+
+def print_matrix(matrix):
+    out_str = f'\tType of Matrix = {matrix.matrix_object.type_of_matrix}\n' \
+              f'\tSize of Matrix = {matrix.size_of_matrix}\n' \
+              f'\tMatrix Data:\n'
+    for i in range(matrix.size_of_matrix):
+        out_str += f'\t'
+        for j in range(matrix.size_of_matrix):
+            if j != matrix.size_of_matrix - 1:
+                out_str += f'{matrix.matrix_data[i][j]}\t'
+            else:
+                out_str += f'{matrix.matrix_data[i][j]}'
+        out_str += f'\n'
+    return out_str
