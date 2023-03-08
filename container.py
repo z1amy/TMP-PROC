@@ -1,5 +1,5 @@
-from matrix import Matrix, SquareMatrix, SquareDiagonalMatrix, str_matrix, fill_square_matrix, \
-    fill_square_diagonal_matrix
+from matrix import Matrix, SquareMatrix, SquareDiagonalMatrix, LowerTriangularMatrix, str_matrix, fill_square_matrix, \
+    fill_square_diagonal_matrix, fill_lower_triangular_matrix
 
 
 class Node:
@@ -54,6 +54,10 @@ def read_from_file(container, in_file):
             new_matrix = Matrix(size_of_matrix)
             new_matrix.matrix_object = SquareDiagonalMatrix()
             fill_square_diagonal_matrix(new_matrix, matrix_data)
+        elif type_of_matrix == 3:
+            new_matrix = Matrix(size_of_matrix)
+            new_matrix.matrix_object = LowerTriangularMatrix()
+            fill_lower_triangular_matrix(new_matrix, matrix_data)
         add(container, new_matrix)
 
 
