@@ -1,20 +1,10 @@
 Filled Container:
-0: 	Type of Matrix = Square Diagonal Matrix
-	Size of Matrix = 2
-	Matrix Data = [[1, 0], [0, 1]]
-	Sum of all Elements = 2
-1: 	Type of Matrix = Square Diagonal Matrix
-	Size of Matrix = 3
-	Matrix Data = [[4, 0, 0], [0, 4, 0], [0, 0, 4]]
-	Sum of all Elements = 12
-2: 	Type of Matrix = Square Matrix
+0: 	Type of Matrix = Square Matrix
 	Size of Matrix = 2
 	Matrix Data = [[1, 3], [4, 5]]
-	Sum of all Elements = 13
 3: 	Type of Matrix = Square Matrix
 	Size of Matrix = 4
 	Matrix Data = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
-	Sum of all Elements = 136
 Container contains 4 elements.
 Container is empty!
 Container contains 0 elements.

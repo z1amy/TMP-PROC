@@ -18,11 +18,11 @@ def main():
     container.sort(cl)
 
     with open(output_file, 'w') as out_file:
-        container.write_to_file(cl, out_file)
+        container.filtered_write_to_file(cl, out_file)
 
     with open(output_file, 'a') as out_file:
         container.clear(cl)
-        container.write_to_file(cl, out_file)
+        container.filtered_write_to_file(cl, out_file)
 
 
 if __name__ == '__main__':
