@@ -17,11 +17,13 @@ If you do not specify files, program will use defaults:\
 `input.txt` should be written in the following style:
 1. Type of matrix
 2. Size of matrix
-3. Data for matrix
+3. Output type
+4. Data for matrix
 
 *Examples:*\
 1\
 2\
+1\
 1 3 4 5\
 This equals for matrix:\
 1   3\
@@ -29,8 +31,16 @@ This equals for matrix:\
 
 2\
 3\
+2\
 1 2 3\
 This equals for matrix:\
+[[1, 0, 0], [0, 2, 0], [0, 0, 3]]
+
+3\
+3\
+1\
+1 2 3 4 5 6\
+This equals for matrix:\
 1   0   0\
-0   2   0\
-0   0   3
+2   3   0\
+4   5   6

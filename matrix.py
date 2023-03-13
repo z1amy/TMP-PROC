@@ -91,4 +91,5 @@ def print_matrix(matrix):
             else:
                 out_str += f'{matrix.matrix_data[i][j]}'
         out_str += f'\n'
+    out_str += f'\tSum of all Elements = {sum_of_all_matrix_elements(matrix)}\n'
     return out_str

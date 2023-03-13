@@ -91,12 +91,18 @@ def filtered_write_to_file(container, out_file):
         i = 0
         out_file.write('Filled Container:\n')
         if current.data.matrix_object.type_of_matrix == 'Square Matrix':
-            out_file.write(f'{i}: {str_matrix(current.data)}')
+            if get_output_type(current.data) == 1:
+                out_file.write(f'{i}: {str(print_matrix(current.data))}')
+            else:
+                out_file.write(f'{i}: {str_matrix(current.data)}')
         while current.next != container.head:
             i += 1
             current = current.next
             if current.data.matrix_object.type_of_matrix == 'Square Matrix':
-                out_file.write(f'{i}: {str_matrix(current.data)}')
+                if get_output_type(current.data) == 1:
+                    out_file.write(f'{i}: {str(print_matrix(current.data))}')
+                else:
+                    out_file.write(f'{i}: {str_matrix(current.data)}')
     out_file.write(f'Container contains {get_size(container)} elements.\n')
 
 
