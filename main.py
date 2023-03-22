@@ -12,19 +12,28 @@ def main():
 
     cl = container.CircularLinkedList()
 
-    with open(input_file, 'r') as in_file:
-        container.read_from_file(cl, in_file)
+    try:
+        with open(input_file, 'r') as in_file:
+            container.read_from_file(cl, in_file)
+    except OSError:
+        print(f'File opening error {in_file}!')
+        sys.exit(1)
 
     container.sort(cl)
 
-    with open(output_file, 'w') as out_file:
-        # container.filtered_write_to_file(cl, out_file)
-        container.write_to_file(cl, out_file)
+    try:
+        with open(output_file, 'w') as out_file:
+            # container.filtered_write_to_file(cl, out_file)
+            container.write_to_file(cl, out_file)
 
-    with open(output_file, 'a') as out_file:
-        container.clear(cl)
-        # container.filtered_write_to_file(cl, out_file)
-        container.write_to_file(cl, out_file)
+        with open(output_file, 'a') as out_file:
+            container.clear(cl)
+            # container.filtered_write_to_file(cl, out_file)
+            container.write_to_file(cl, out_file)
+    except OSError:
+        print(f'File writing error {out_file}!')
+        sys.exit(1)
+
 
 if __name__ == '__main__':
     main()
