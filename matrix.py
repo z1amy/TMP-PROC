@@ -93,3 +93,30 @@ def print_matrix(matrix):
         out_str += f'\n'
     out_str += f'\tSum of all Elements = {sum_of_all_matrix_elements(matrix)}\n'
     return out_str
+
+
+def check(matrix_1, matrix_2):
+    match matrix_1, matrix_2:
+        case SquareMatrix(), SquareMatrix():
+            print('Matrices belong to the same type: Square Matrix')
+        case SquareMatrix(), SquareDiagonalMatrix():
+            print('Matrices belong to the different types: Square Matrix and Square Diagonal Matrix')
+        case SquareMatrix(), LowerTriangularMatrix():
+            print('Matrices belong to the different types: Square Matrix and Lower Triangular Matrix')
+        case SquareDiagonalMatrix(), SquareDiagonalMatrix():
+            print('Matrices belong to the same type: Square Diagonal Matrix')
+        case SquareDiagonalMatrix(), SquareMatrix():
+            print('Matrices belong to the different types: Square Diagonal Matrix and Square Matrix')
+        case SquareDiagonalMatrix(), LowerTriangularMatrix():
+            print('Matrices belong to the different types: Square Diagonal Matrix and Lower Triangular Matrix')
+        case LowerTriangularMatrix(), LowerTriangularMatrix():
+            print('Matrices belong to the same type: Lower Triangular Matrix')
+        case LowerTriangularMatrix(), SquareMatrix():
+            print('Matrices belong to the different types: Lower Triangular Matrix and Square Matrix')
+        case LowerTriangularMatrix(), SquareDiagonalMatrix():
+            print('Matrices belong to the different types: Lower Triangular Matrix and Square Diagonal Matrix')
+        case _:
+            print('Unknown type')
+            return
+
+    print(f'First: type={type(matrix_1)}, id={id(matrix_1)}\nSecond: type={type(matrix_2)}, id={id(matrix_2)}\n')

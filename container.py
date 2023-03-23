@@ -1,5 +1,5 @@
 from matrix import Matrix, SquareMatrix, SquareDiagonalMatrix, LowerTriangularMatrix, str_matrix, fill_square_matrix, \
-    fill_square_diagonal_matrix, fill_lower_triangular_matrix, get_output_type, print_matrix, compare
+    fill_square_diagonal_matrix, fill_lower_triangular_matrix, get_output_type, print_matrix, compare, check
 import sys
 
 
@@ -152,3 +152,17 @@ def sort(container):
             node2 = container.head
             if node1 is container.head:
                 break
+
+
+def check_matrices(container):
+    node1 = container.head
+    while True:
+        node2 = container.head
+        while True:
+            check(node1.data.matrix_object, node2.data.matrix_object)
+            node2 = node2.next
+            if node2 == container.head:
+                break
+        node1 = node1.next
+        if node1 == container.head:
+            break
