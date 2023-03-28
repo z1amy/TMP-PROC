@@ -4,27 +4,53 @@ import sys
 
 
 class Node:
+    """
+    Class describing the node of Circular Linked List
+    """
     def __init__(self, data):
+        """
+        Constructor of the Node class
+        :param data: The data contained in the class (matrix)
+        """
         self.data = data
         self.next = None
 
 
 class CircularLinkedList:
+    """
+    Class representing the implementation of the container (Circular Linked List)
+    """
     def __init__(self):
+        """
+        Constructor of the Circular Linked List class
+        """
         self.size = 0
         self.head = None
         self.tail = None
 
 
 def clear(container):
+    """
+    The function which cleans the container
+    :param container: Circular Linked List
+    """
     container.__init__()
 
 
 def get_size(container):
+    """
+    The function which returns the length of the container
+    :param container: Circular Linked List
+    """
     return container.size
 
 
 def add(container, data):
+    """
+    The function which adds new node to the container
+    :param container: Circular Linked List
+    :param data: The data contained in the new node
+    """
     new_node = Node(data)
     if container.head is None:
         container.head = new_node
@@ -38,54 +64,60 @@ def add(container, data):
 
 
 def read_from_file(container, in_file):
-    try:
-        lines = in_file.readlines()
-    except OSError:
-        print(f'File reading error {in_file}!')
-        sys.exit(1)
-
-    if len(lines) % 4 != 0:
-        print('Invalid input data format!')
-        sys.exit(1)
-
-    for index in range(0, len(lines), 4):
+    """
+    The function in which the file is read and the container is filled
+    :param container: Circular Linked List
+    :param in_file: Input file
+    """
+    for line in in_file:
+        data = line.strip().split(';')
         try:
-            type_of_matrix = int(lines[index].strip())
-            size_of_matrix = int(lines[index + 1].strip())
-            output_type = int(lines[index + 2].strip())
+            type_of_matrix = int(data[0].strip())
+            size_of_matrix = int(data[1].strip())
+            output_type = int(data[2].strip())
         except ValueError:
-            print('Invalid input data format!')
-            sys.exit(1)
-        matrix_data = lines[index + 3].strip()
-        new_matrix = None
+            print(f'Invalid input data format!\n'
+                  f'Line: {line}\n')
+            continue
+        matrix_data = data[3].strip()
         if type_of_matrix == 1:
             new_matrix = Matrix(size_of_matrix, output_type)
             new_matrix.matrix_object = SquareMatrix()
             try:
                 fill_square_matrix(new_matrix, matrix_data)
-            except IndexError or ValueError:
-                print('Invalid input data format!')
-                sys.exit(1)
+            except (IndexError, ValueError):
+                print(f'Invalid input data format!\n'
+                      f'Line: {line}\n')
+                continue
         elif type_of_matrix == 2:
             new_matrix = Matrix(size_of_matrix, output_type)
             new_matrix.matrix_object = SquareDiagonalMatrix()
             try:
                 fill_square_diagonal_matrix(new_matrix, matrix_data)
-            except IndexError or ValueError:
-                print('Invalid input data format!')
-                sys.exit(1)
+            except (IndexError, ValueError):
+                print(f'Invalid input data format!\n'
+                      f'Line: {line}\n')
+                continue
         elif type_of_matrix == 3:
             new_matrix = Matrix(size_of_matrix, output_type)
             new_matrix.matrix_object = LowerTriangularMatrix()
             try:
                 fill_lower_triangular_matrix(new_matrix, matrix_data)
-            except IndexError or ValueError:
-                print('Invalid input data format!')
-                sys.exit(1)
+            except (IndexError, ValueError):
+                print(f'Invalid input data format!\n'
+                      f'Line: {line}\n')
+                continue
+        else:
+            continue
         add(container, new_matrix)
 
 
 def write_to_file(container, out_file):
+    """
+    The function in which the container is written to the file
+    :param container: Circular Linked List
+    :param out_file: Output file
+    """
     current = container.head
     try:
         if container.head is None:
@@ -111,6 +143,12 @@ def write_to_file(container, out_file):
 
 
 def filtered_write_to_file(container, out_file):
+    """
+    The function in which the filtered container is written to the file
+    Only square matrices are written
+    :param container: Circular Linked List
+    :param out_file: Output file
+    """
     current = container.head
     try:
         if container.head is None:
@@ -138,6 +176,10 @@ def filtered_write_to_file(container, out_file):
 
 
 def sort(container):
+    """
+    The function in which the container is sorted
+    :param container: Circular Linked List
+    """
     if container.head is not None:
         node1 = container.head
         node2 = container.head.next
@@ -155,6 +197,10 @@ def sort(container):
 
 
 def check_matrices(container):
+    """
+    The function in which container nodes are compared
+    :param container: Circular Linked List
+    """
     node1 = container.head
     while True:
         node2 = container.head
